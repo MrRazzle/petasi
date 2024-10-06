@@ -1,0 +1,24 @@
+{
+    "name": "petasi",
+    "description": "Attempt 1 at a keyboard",
+    "version": ".1",
+    "author": "MrRazzle <razzle@mr-razzle.net>",
+    "license": "MIT",
+    "private": false,
+    "homepage": "https://github.com/MrRazzle/petasi",
+    "repository": "github:MrRazzle/petasi",
+    "bugs": "https://github.com/MrRazzle/petasi/issues",
+    "scripts": {
+        "ergogen:build": "ergogen --clean -o ergogen/output ergogen",
+        "ergogen:watch": "nodemon --ext .js,.yaml --watch ergogen/footprints --watch ergogen/config.yaml --exec npm run ergogen:build",
+        "zmk:update": "docker compose -f zmk/docker-compose.yml run --rm firmware-env zmk-update",
+        "zmk:build": "docker compose -f zmk/docker-compose.yml run --rm firmware-env zmk-build",
+        "zmk:down": "docker compose -f zmk/docker-compose.yml down"
+    },
+    "dependencies": {
+        "ergogen": "^4.0.2"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.21"
+    }
+}
