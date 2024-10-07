@@ -1,9 +1,16 @@
 units:
-#Change to choc by changing to cx and cy instead of u
+  #Change to choc by changing to cx and cy instead of u
   kx: u
   ky: u
+  #Padding
   px: kx + 8
   py: ky + 8
+  # Larger Padding Variables
+  dpx: kx + 12
+  dpy: ky + 12
+  # M2 Screw Inserts
+  screwSize: 1.5
+  standoffSize: 2.5
 points:
   key:
     padding: 1ky
@@ -125,10 +132,69 @@ outlines:
         shift: [-0.5px,0.5py]  
       - ref: main_pinkie_bot
         shift: [-0.5px,0.5py]           
+  xlboard:
+    - what: polygon
+      operation: stack
+      fillet: 2
+      points:
+      - ref: main_pinkie_bot
+        shift: [-0.5dpx,-0.5dpy]
+      - ref: main_pinkie_bot
+        shift: [0.5dpx,-0.5dpy]        
+      - ref: main_ring_bot
+        shift: [0dpx,-0.5dpy]
+      - ref: main_index_bot
+        shift: [-0.5dpx,-0.5dpy]   
+      - ref:  thumb_three
+        shift: [-0.5dpx,0.5dpy]
+      - ref:  thumb_three
+        shift: [-0.5dpx,-0.5dpy]            
+      - ref: thumb_one
+        shift: [-.5dpx,-0.5dpy] 
+      - ref: thumb_one
+        shift: [-.5dpx,-0.5dpy] 
+      - ref: thumb_two
+        shift: [-.5dpx,-0.5dpy]   
+      - ref: thumb_two
+        shift: [.5dpx,-0.5dpy] 
+      - ref: main_index2_bot
+        shift: [0.8dpx,-.5dpy]
+      - ref: main_index2_bot
+        shift: [0.75dpx,-.25dpy]        
+      - ref: main_index2_bot
+        shift: [1.5dpx,-.250dpy]     
+      - ref: main_index2_mid
+        shift: [1.5dpx,-.5dpy]        
+      - ref: main_index2_top
+        shift: [1.5dpx,.75dpy]          
+      - ref: main_middle_top
+        shift: [-0.5dpx,0.5dpy] 
+      - ref: main_ring_top
+        shift: [-0.5dpx,0.5dpy]    
+      - ref: main_pinkie_top
+        shift: [-0.5dpx,0.5dpy]  
+      - ref: main_pinkie_bot
+        shift: [-0.5dpx,0.5dpy]
   combo:
     - name: board
     - operation: subtract
       name: keys
+  mounting:
+    - what: circle
+      radius: screwSize
+      where:
+        ref: main_pinkie_top   
+        shift:  [-0.25kx, -0.35ky] 
+    - what: circle
+      radius: screwSize
+      where:
+        ref: main_index2_top   
+        shift:  [-0.25kx, -0.35ky]
+    - what: circle
+      radius: screwSize
+      where:
+        ref: main_index2_bot 
+        shift:  [.25kx, -2ky]
 pcbs:
   petasi:
     outlines:
@@ -191,3 +257,51 @@ pcbs:
             shift: [2kx,-2.1ky]
           params:
             net: pos
+      holeTopLeft:
+        what: mountinghole
+        where:
+          ref: main_pinkie_top   
+          shift:  [-0.25kx, -0.35ky]
+      holeTopRight:
+        what: mountinghole
+        where:
+          ref: main_index2_top   
+          shift:  [-0.25kx, -0.35ky]
+      holeBottomRight:
+        what: mountinghole
+        where:
+          ref: main_index2_bot 
+          shift:  [.25kx, -2ky]
+cases:
+  bottom:
+    - name: board
+      extrude: 1
+  xlbottom:
+    - name: xlboard
+      extrude: 1
+  _outerWall:
+    - name: xlboard
+      extrude: 4
+  _innerWall:
+    - name: board
+      extrude: 4
+  wall:
+    - what: case
+      name: _outerWall
+      operation: add
+    - what: case
+      name: _innerWall
+      operation: subtract
+  _holes:
+    - name: mounting
+      extrude: 4
+  case:
+    - what: case
+      name: xlbottom
+      operation: add
+    - what: case
+      name: _holes
+      operation: add      
+    - what: case
+      name: wall
+      operation: add      
