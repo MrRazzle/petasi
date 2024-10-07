@@ -195,6 +195,22 @@ outlines:
       where:
         ref: main_index2_bot 
         shift:  [.25kx, -2ky]
+  standoff:
+    - what: circle
+      radius: standoffSize
+      where:
+        ref: main_pinkie_top   
+        shift:  [-0.25kx, -0.35ky] 
+    - what: circle
+      radius: standoffSize
+      where:
+        ref: main_index2_top   
+        shift:  [-0.25kx, -0.35ky]
+    - what: circle
+      radius: standoffSize
+      where:
+        ref: main_index2_bot 
+        shift:  [.25kx, -2ky]        
 pcbs:
   petasi:
     outlines:
@@ -281,10 +297,10 @@ cases:
       extrude: 1
   _outerWall:
     - name: xlboard
-      extrude: 4
+      extrude: 6
   _innerWall:
     - name: board
-      extrude: 4
+      extrude: 6
   wall:
     - what: case
       name: _outerWall
@@ -295,13 +311,19 @@ cases:
   _holes:
     - name: mounting
       extrude: 4
+  _standoffs:
+    - name: standoff
+      extrude: 4
   case:
+    - what: case
+      name: _standoffs
+      operation: add
+    - what: case
+      name: _holes
+      operation: subtract
     - what: case
       name: xlbottom
       operation: add
     - what: case
-      name: _holes
-      operation: add      
-    - what: case
       name: wall
-      operation: add      
+      operation: add
