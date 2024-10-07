@@ -142,9 +142,9 @@ outlines:
       - ref: main_pinkie_bot
         shift: [0.5dpx,-0.5dpy]        
       - ref: main_ring_bot
-        shift: [0dpx,-0.5dpy]
+        shift: [0dpx,-0.6dpy]
       - ref: main_index_bot
-        shift: [-0.5dpx,-0.5dpy]   
+        shift: [-0.5dpx,-0.6dpy]   
       - ref:  thumb_three
         shift: [-0.5dpx,0.5dpy]
       - ref:  thumb_three
