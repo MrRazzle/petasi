@@ -3,11 +3,11 @@ units:
   kx: u
   ky: u
   #Padding
-  px: kx + 8
-  py: ky + 8
+  px: kx + 5
+  py: ky + 5
   # Larger Padding Variables
-  dpx: kx + 12
-  dpy: ky + 12
+  dpx: kx + 10
+  dpy: ky + 10
   # M2 Screw Inserts
   screwSize: 1.5
   standoffSize: 2.5
@@ -99,9 +99,9 @@ outlines:
       - ref: main_pinkie_bot
         shift: [0.5px,-0.5py]        
       - ref: main_ring_bot
-        shift: [0px,-0.6py]
+        shift: [0px,-0.7py]
       - ref: main_index_bot
-        shift: [-0.5px,-0.6py]   
+        shift: [-0.5px,-0.7py]   
       - ref:  thumb_three
         shift: [-0.5px,0.5py]
       - ref:  thumb_three
@@ -117,7 +117,7 @@ outlines:
       - ref: main_index2_bot
         shift: [0.8px,-.5py]
       - ref: main_index2_bot
-        shift: [0.75px,-.25py]        
+        shift: [1.5px,-.25py]        
       - ref: main_index2_bot
         shift: [1.5px,-.250py]     
       - ref: main_index2_mid
@@ -160,7 +160,7 @@ outlines:
       - ref: main_index2_bot
         shift: [0.8dpx,-.5dpy]
       - ref: main_index2_bot
-        shift: [0.75dpx,-.25dpy]        
+        shift: [1.5dpx,-.25dpy]        
       - ref: main_index2_bot
         shift: [1.5dpx,-.250dpy]     
       - ref: main_index2_mid
@@ -231,7 +231,7 @@ pcbs:
           orientation: "down"
         where:
           ref: main_index2_top
-          shift: [1.45kx,-0.1ky]
+          shift: [1.2kx,-0.2ky]
           rotate: -90
       reset:
         what: wuerth-434121025816
@@ -240,13 +240,13 @@ pcbs:
           r2: GND
         where:
           ref: main_index2_top
-          shift: [1.25kx,-2ky]
+          shift: [1.20kx,-2.1ky]
           rotate: 0
       powerswitch:
           what: pcm12
           where:
             ref: main_index2_top
-            shift: [1.8kx,-1.45ky]
+            shift: [1.75kx,-1.45ky]
             rotate: 90
           params:
             from: pos
@@ -263,21 +263,21 @@ pcbs:
           what: via
           where:
             ref: main_index2_top
-            shift: [1.8kx,-2ky]
+            shift: [1.7kx-3,-1.45ky]
           params:
             net: RAW
       switchviapos:
           what: via
           where:
             ref: main_index2_top
-            shift: [1.8kx,-2.1ky]
+            shift: [1.7kx-3,-1.45ky-3]
           params:
             net: pos
       holeTopLeft:
         what: mountinghole
         where:
           ref: main_pinkie_top   
-          shift:  [-0.25kx, -0.35ky]
+          shift:  [-0.25kx, -1.35ky]
       holeTopRight:
         what: mountinghole
         where:
@@ -287,12 +287,12 @@ pcbs:
         what: mountinghole
         where:
           ref: main_index2_bot 
-          shift:  [.25kx, -2ky]
+          shift:  [1.10kx, -2ky]
       front_text: &text
           what: text
           where: &textWhere
             ref: main_pinkie_bot 
-            shift: [12, -5]
+            shift: [12, -6]
           params: &textParams
             text: petasi\nA keyboard designed by MrRazzle
             justify: left          
@@ -305,10 +305,10 @@ cases:
       extrude: 1
   _outerWall:
     - name: xlboard
-      extrude: 6
+      extrude: 7
   _innerWall:
     - name: board
-      extrude: 6
+      extrude: 7
   wall:
     - what: case
       name: _outerWall
