@@ -25,61 +25,53 @@ points:
         spread: 1kx
       rows:
         bot:
+          row_net: P15
         mid:
+          row_net: P18
         top:
+          row_net: P19
       columns:
         pinkie:
-          rows:
-            top.column_net: P21
-            mid.column_net: P1
-            bot.column_net: P0   
+          key:
+            column_net: P5
         ring:
           key:
+            column_net: P9
             stagger: .4ky
-          rows:
-            top.column_net: P18
-            mid.column_net: P19
-            bot.column_net: P20   
         middle:
           key:
+            column_net: P8
             stagger: .2ky
-          rows:
-            top.column_net: P16
-            mid.column_net: P14
-            bot.column_net: P15
         index:
           key:
+            column_net: P7
             stagger: -.2ky    
-          rows:
-            top.column_net: P10
-            mid.column_net: P6
-            bot.column_net: P5
         index2:
-          rows:
-            top.column_net: P7
-            mid.column_net: P8
-            bot.column_net: P9
+          key:
+            column_net: P6
     thumb:
       anchor:
         ref: main_index2_bot
         shift: [1kx,-1.5ky]
         rotate: -30
-      rows:     
+      rows:
+        single:
+          row_net: P14
       columns:
         one:
           key:
             width: 1.5kx
             splay: 75
-            column_net: P3
+            column_net: P7
         two:  
           key:
             width: 1.5kx   
             shift: [-1kx,-1ky]
-            column_net: P2
+            column_net: P6       
         three: 
           key:
             shift: [-2.8kx,1.1ky]
-            column_net: P4
+            column_net: P8      
 outlines:
   raw:
     - what: rectangle
@@ -102,17 +94,17 @@ outlines:
         shift: [0px,-0.7py]
       - ref: main_index_bot
         shift: [-0.5px,-0.7py]   
-      - ref:  thumb_three
+      - ref:  thumb_three_single
         shift: [-0.5px,0.5py]
-      - ref:  thumb_three
+      - ref:  thumb_three_single
         shift: [-0.5px,-0.5py]            
-      - ref: thumb_one
+      - ref: thumb_one_single
         shift: [-.5px,-0.5py] 
-      - ref: thumb_one
+      - ref: thumb_one_single
         shift: [-.5px,-0.5py] 
-      - ref: thumb_two
+      - ref: thumb_two_single
         shift: [-.5px,-0.5py]   
-      - ref: thumb_two
+      - ref: thumb_two_single
         shift: [.5px,-0.5py] 
       - ref: main_index2_bot
         shift: [0.8px,-.5py]
@@ -145,17 +137,17 @@ outlines:
         shift: [0dpx,-0.6dpy]
       - ref: main_index_bot
         shift: [-0.5dpx,-0.6dpy]   
-      - ref:  thumb_three
+      - ref:  thumb_three_single
         shift: [-0.5dpx,0.5dpy]
-      - ref:  thumb_three
+      - ref:  thumb_three_single
         shift: [-0.5dpx,-0.5dpy]            
-      - ref: thumb_one
+      - ref: thumb_one_single
         shift: [-.5dpx,-0.5dpy] 
-      - ref: thumb_one
+      - ref: thumb_one_single
         shift: [-.5dpx,-0.5dpy] 
-      - ref: thumb_two
+      - ref: thumb_two_single
         shift: [-.5dpx,-0.5dpy]   
-      - ref: thumb_two
+      - ref: thumb_two_single
         shift: [.5dpx,-0.5dpy] 
       - ref: main_index2_bot
         shift: [0.8dpx,-.5dpy]
@@ -200,17 +192,17 @@ outlines:
       radius: standoffSize
       where:
         ref: main_pinkie_top   
-        shift:  [-0.25kx, -0.35ky] 
+        shift:  [-0.25kx, -0.40ky] 
     - what: circle
       radius: standoffSize
       where:
         ref: main_index2_top   
-        shift:  [-0.25kx, -0.35ky]
+        shift:  [-0.25kx, -0.40ky]
     - what: circle
       radius: standoffSize
       where:
         ref: main_index2_bot 
-        shift:  [.25kx, -2ky]        
+        shift:  [.25kx, -2.05ky]        
 pcbs:
   petasi:
     template: kicad8 # Required, since footprints are KiCad 8 only
@@ -226,6 +218,14 @@ pcbs:
           hotswap: true
           from: "{{column_net}}"
           to: "{{colrow}}"
+      diode:
+        what: diode
+        where: true
+        params:
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [0, -5]          
       nicenano:
         what: mcu_nice_nano
         params:
@@ -293,17 +293,17 @@ pcbs:
         what: mountinghole
         where:
           ref: main_pinkie_top   
-          shift:  [-0.25kx, -1.35ky]
+          shift:  [-0.25kx, -1.55ky]
       holeTopRight:
         what: mountinghole
         where:
           ref: main_index2_top   
-          shift:  [-0.25kx, -0.35ky]
+          shift:  [-0.25kx, -0.55ky]
       holeBottomRight:
         what: mountinghole
         where:
           ref: main_index2_bot 
-          shift:  [1.10kx, -2ky]
+          shift:  [1.10kx, -2.2ky]
       front_text: &text
           what: text
           where: &textWhere
