@@ -213,6 +213,7 @@ outlines:
         shift:  [.25kx, -2ky]        
 pcbs:
   petasi:
+    template: kicad8 # Required, since footprints are KiCad 8 only
     outlines:
       main:
         outline: board
@@ -225,14 +226,29 @@ pcbs:
           hotswap: true
           from: "{{column_net}}"
           to: "{{colrow}}"
-      promicro:
-        what: promicro
+      nicenano:
+        what: mcu_nice_nano
         params:
-          orientation: "down"
+          reversible: false
+          reverse_mount: true
         where:
           ref: main_index2_top
-          shift: [1.2kx,-0.2ky]
-          rotate: -90
+          shift: [1.2kx,-0.1ky]
+          #rotate: -90
+      niceview:
+        what: display_nice_view
+        params:
+          reversible: false
+          MOSI: P2
+          SCK: GND
+          VCC: VCC # no actual change needed
+          GND: P21
+          CS: P20
+          include_labels: false
+        where:
+          ref: main_index2_top
+          shift: [1.2kx,-0.3ky]
+          #rotate: -90          
       reset:
         what: wuerth-434121025816
         params:
@@ -246,8 +262,8 @@ pcbs:
           what: pcm12
           where:
             ref: main_index2_top
-            shift: [1.75kx,-1.45ky]
-            rotate: 90
+            shift: [1.2kx,0.80ky]
+            rotate: 180
           params:
             from: pos
             to: RAW
@@ -256,21 +272,21 @@ pcbs:
           where:
             ref: main_index2_top
             shift: [1.25kx,-1.6ky]
-            rotate: 180
+            rotate: 270
           params:
             neg: GND
       switchviaraw:
           what: via
           where:
             ref: main_index2_top
-            shift: [1.7kx-3,-1.45ky]
+            shift: [0.8kx,0.8ky]
           params:
             net: RAW
       switchviapos:
           what: via
           where:
             ref: main_index2_top
-            shift: [1.7kx-3,-1.45ky-3]
+            shift: [1.62kx,0.8ky]
           params:
             net: pos
       holeTopLeft:
