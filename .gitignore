@@ -1,9 +1,7 @@
 node_modules
 ergogen/output
 ergogen/kicad/gerber
-zmk
 kikad/petasi
 hat.pswd
-.zmk/
 kikad/petasi
 kikad/left/fp-info-cache
