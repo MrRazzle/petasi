@@ -1,0 +1,11 @@
+file_format: "1"
+id: petasi
+name: petasi
+type: shield
+url: https://github.com/MrRazzle/petasi/
+requires: [pro_micro]
+features:
+    - keys
+siblings:
+    - petasi_left
+    - petasi_right
