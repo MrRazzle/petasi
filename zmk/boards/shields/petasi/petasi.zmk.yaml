@@ -3,9 +3,10 @@ id: petasi
 name: petasi
 type: shield
 url: https://github.com/MrRazzle/petasi/
-requires: [pro_micro]
+requires: [nice_nano_v2]
 features:
     - keys
+    - display
 siblings:
     - petasi_left
     - petasi_right
