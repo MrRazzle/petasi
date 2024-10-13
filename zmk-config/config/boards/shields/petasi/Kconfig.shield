@@ -1,5 +1,0 @@
-config SHIELD_PETASI_LEFT
-    def_bool $(shields_list_contains,petasi_left)
-
-config SHIELD_PETASI_RIGHT
-    def_bool $(shields_list_contains,petasi_right)
